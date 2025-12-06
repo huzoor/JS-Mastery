@@ -52,3 +52,44 @@ ii. **Java Script is a 'Synchronous' & 'Single Threaded Language'**
 6. Modern JS engine follows JIT compilation, it interprets while it optimises code as much as it can.
 7. Execution and Compilation are done together.
 8. Execution has Garbage collector and other optimisation such as inlining, copy elusion, inline caching etc.
+
+## Generators / Iterators
+Here are **10 clear bullet points** summarizing the video on **JavaScript Generator Functions**:
+
+1. Generator functions are declared using the special syntax **`function*`**.
+2. They return a **generator object**, which is an iterator that can pause and resume execution.
+3. The **`yield`** keyword pauses the function and outputs a value to the caller.
+4. Each call to **`next()`** resumes the generator from where it last paused.
+5. Generators help implement **lazy evaluation**, producing values only when needed.
+6. They remember their **internal state** between pauses, including variables and execution position.
+7. Ideal for creating **custom iterators** or infinite sequences without memory overhead.
+8. Useful in scenarios where you need **step-by-step control** over execution flow.
+9. Can simplify asynchronous patterns by allowing pausing/resuming logic flow manually.
+10. Often used in system design, interview questions, and functional patterns to demonstrate control over iteration.
+### Basic Generator Function
+```
+function* simpleGenerator() {
+  yield "Hello";
+  yield "World";
+}
+
+const gen = simpleGenerator();
+
+console.log(gen.next()); // { value: 'Hello', done: false }
+console.log(gen.next()); // { value: 'World', done: false }
+console.log(gen.next()); // { value: undefined, done: true }
+```
+
+### Yielding Values in a Loop
+```
+
+function* numberGenerator(limit) {
+  for (let i = 1; i <= limit; i++) {
+    yield i;
+  }
+}
+
+for (const num of numberGenerator(5)) {
+  console.log(num);
+}
+```

@@ -1,4 +1,46 @@
 
+// Object and related changes==============
+var arr1 = "john".split('');
+var arr2 = arr1.reverse();
+var arr3 = "jones".split('');
+arr2.push(arr3);
+console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+// array 1: length=5 last=j,o,n,e,s
+console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+// array 2: length=5 last=j,o,n,e,s
+
+// Why?
+// .reverse() mutates(changes original array) the original array.
+// arr1.length → 5
+// arr1.slice(-1) → returns an array containing the last element:
+
+
+
+// Functon Currying=========
+function multiply(a) {
+
+  if(arguments.length > 1){
+     return [...arguments].reduce((acc, crr)=>acc*crr)
+  }
+  function inner(b) {
+    if (b === undefined) return a;
+
+    // Otherwise multiply and recurse
+    return multiply(a * b);
+  }
+
+  return inner;
+}
+
+
+var result = multiply(2)(3)(4)
+console.log(result())
+
+var result2 = multiply(2,3,4)
+
+console.log(result2)
+
+
 // Valid Parathesis Problem===============
 
 // Given a string containing 
